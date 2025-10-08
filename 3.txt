@@ -1,0 +1,16 @@
+Filename: D:\Projects\alghorithms\task17.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    53    51.41 MiB    51.41 MiB           1   @profile(precision=2, stream=open('3.txt', 'w'))
+    54                                         def main():
+    55    51.41 MiB     0.00 MiB           1       input_file = '1.txt'
+    56    51.41 MiB     0.00 MiB           1       output_file = '2.txt'
+    57                                             
+    58    51.41 MiB     0.00 MiB           1       if not os.path.exists(input_file):
+    59                                                 print(f"Ошибка: Файл {input_file} не найден!")
+    60                                                 return
+    61                                             
+    62    55.93 MiB     4.52 MiB           1       external_sort_with_profiling(input_file, output_file)
+
+
