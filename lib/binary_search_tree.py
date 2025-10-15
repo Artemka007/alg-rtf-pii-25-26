@@ -105,6 +105,7 @@ class BinaryTree[TKey]:
     
     def insert(self, key: TKey):
         node = self.root
+        parent = None
 
         while node:
             if node.key < key and node.right:
@@ -113,6 +114,7 @@ class BinaryTree[TKey]:
             if node.key < key and not node.right:
                 new_node = Node(key, node)
                 node.right = new_node
+                new_node.parent = node
             
             if node.key > key and node.left:
                 node = node.left
@@ -120,6 +122,7 @@ class BinaryTree[TKey]:
             if node.key > key and not node.left:
                 new_node = Node(key, node)
                 node.left = new_node
+                new_node.parent = node
 
         return node
 
@@ -148,3 +151,35 @@ class BinaryTree[TKey]:
         
         return root
 
+    def alternative_delete(self, node: Node[TKey], key: TKey):
+        if node.left is None and node.right is None:
+            if node.parent.left == node:
+                node.parent.left = None
+            else:
+                node.parent.right = None
+            return
+
+        if node.left is None:
+            if node.parent.left == node:
+                node.parent.left = node.right
+            else:
+                node.parent.right = node.right
+            return
+
+        if node.right is None:
+            if node.parent.right == node:
+                node.parent.right = node.right
+            else:
+                node.parent.left = node.right
+
+            return
+        
+        next_node = self.next(node.parent)
+        next_node.right = node.right
+        next_node.left = node.left
+        next_node.parent = node.parent
+
+        if node.parent.left == node:
+            node.parent.left = next_node
+        else:
+            node.parent.right = next_node
