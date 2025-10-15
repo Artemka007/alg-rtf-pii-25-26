@@ -1,3 +1,6 @@
+from test_func import universal_test_solution
+
+
 def solution(n: int, m: int):
     if m == 0:
         return 1
@@ -17,4 +20,16 @@ def solution(n: int, m: int):
 
     return res
 
-print(solution(1000, 3))
+test_cases = [
+    {'input': {'n': 4, 'm': 2}, 'expected': 6},
+    {'input': {'n': 4, 'm': 3}, 'expected': 2},
+    {'input': {'n': 5, 'm': 3}, 'expected': 4},
+    {'input': {'n': 6, 'm': 3}, 'expected': 7},
+    {'input': {'n': 1000, 'm': 999}, 'expected': 2},
+]
+
+if __name__ == "__main__":
+    universal_test_solution(solution, test_cases,
+        show_input_preview=3,
+        show_output_preview=1)
+    

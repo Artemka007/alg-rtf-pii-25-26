@@ -1,13 +1,20 @@
-from lib import custom_pow
-
+from functools import lru_cache
 
 def solution(N: int, M: int, MOD: int, *args):
+    coefficients = tuple(args[:N+1])
+    
+    @lru_cache(maxsize=None)
+    def evaluate_polynomial(x):
+        result = 0
+        power = 1
+        # Вычисляем от младших степеней к старшим
+        for coeff in reversed(coefficients):
+            result = (result + coeff * power) % MOD
+            power = (power * x) % MOD
+        return result
+    
     for j in range(N + 1, M + N + 1):
-        res = 0
-        for i in range(N + 1):
-            res += args[i] * custom_pow.custom_pow(args[j], (N - i))
-        yield res % MOD
-
+        yield evaluate_polynomial(args[j])
 # N, M, MOD = [int(i) for i in input().split(' ')]
 
 # args = []

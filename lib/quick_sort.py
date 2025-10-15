@@ -1,8 +1,11 @@
+import sys
 from types import NoneType
 from typing import Callable, List, TypeVar
 
 T = TypeVar('T')
 
+
+sys.setrecursionlimit(100000)
 
 def partiotion[T](items: List[T], low_bound: int, up_bound: int, key: Callable[[T], bool]=lambda x: x):
     pivot = items[up_bound]

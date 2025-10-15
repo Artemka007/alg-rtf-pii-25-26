@@ -1,4 +1,4 @@
-import test_func
+from test_func import universal_test_solution
 
 def solution(n, numbers):
     # создали результирующий массив
@@ -35,15 +35,37 @@ def solution(n, numbers):
     return result
 
 
-tests = [
-    [0, 1, 4, 9, 0],
-    [0, 7, 9, 4, 8, 20],
-    [0, 1, 4, 9, 0, 0, 7, 9, 4, 8, 20, 0, 67, 25],
-    [0, 0, 0, 0, 4],
-    [1, 2, 3, 4, 5, 6, 7, 8, 0],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8],
-    [0, 1, 2, 3, 0, 5, 6, 7, 8],
-    [0, 1, 4, 9, 0, 0, 7, 9, 4, 8]*10**5,
-    [0, 1, 4, 9, 0, 0, 7, 9, 4, 10**9]*10**5,
+
+performance_tests = [
+    {
+        'input': {'n': 1000000, 'numbers': [0] + [1] * 999999},
+        'expected': None  # Проверяем только что не падает
+    },
+    {
+        'input': {'n': 1000000, 'numbers': [1] * 999999 + [0]},
+        'expected': None
+    },
+    {
+        'input': {'n': 1000000, 'numbers': [0] * 1000000},
+        'expected': [0] * 1000000
+    },
+    {
+        'input': {'n': 1000000, 'numbers': [1] * 1000000},
+        'expected': [None] * 1000000
+    },
+    {
+        'input': {'n': 1000000, 'numbers': [0, 1, 4, 9, 0, 0, 1, 4, 9, 0] * 100000},
+        'expected': None
+    },
 ]
-test_func.test_func(solution, tests)
+
+if __name__ == "__main__":
+    print("\n\n" + "="*120)
+    print("ТЕСТЫ ПРОИЗВОДИТЕЛЬНОСТИ (большие массивы)")
+    print()
+    universal_test_solution(
+        solution, 
+        performance_tests,
+        show_input_preview=3,
+        show_output_preview=3
+    )

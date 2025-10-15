@@ -1,11 +1,12 @@
 import os
 import tempfile
-from lib import MinHeap
-from memory_profiler import profile
+import time
+import tracemalloc
+from lib.heap import MinHeap
 
 
-def external_sort_with_profiling(input_file, output_file):
-    chunk_size = 100000 
+def external_sort(input_file, output_file):
+    chunk_size = 1024*8*2 
     
     temp_files = []
     with open(input_file, 'r', encoding='utf-8') as f:
@@ -50,7 +51,6 @@ def external_sort_with_profiling(input_file, output_file):
         for file in files:
             file.close()
 
-@profile(precision=2, stream=open('3.txt', 'w'))
 def main():
     input_file = '1.txt'
     output_file = '2.txt'
@@ -58,7 +58,14 @@ def main():
     if not os.path.exists(input_file):
         print(f"Ошибка: Файл {input_file} не найден!")
         return
-    
-    external_sort_with_profiling(input_file, output_file)
+    tracemalloc.start()
 
+    start_time = time.time()
+    
+    external_sort(input_file, output_file)
+    
+    current, peak = tracemalloc.get_traced_memory()
+    print('Memory usage: ', peak / 1024 / 1024, 'MiB')
+    print('Time: ', (time.time() - start_time ), 'c')
+    tracemalloc.stop()
 main()
