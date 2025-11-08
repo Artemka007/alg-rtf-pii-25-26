@@ -2,7 +2,7 @@ import os
 import tempfile
 import time
 import tracemalloc
-from lib.heap import MinHeap
+from lib.min_heap import MinHeap
 
 
 def external_sort(input_file, output_file):

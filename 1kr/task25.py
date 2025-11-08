@@ -1,4 +1,4 @@
-from lib.heap import MinHeap
+from lib.min_heap import MinHeap
 
 
 class Solution:
