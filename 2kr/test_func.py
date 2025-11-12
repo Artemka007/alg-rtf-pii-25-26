@@ -127,13 +127,13 @@ def universal_test_solution(
                 result_preview = str(result)[:200]
             
             # Формируем строку таблицы
-            row = [f"{i}", input_preview, result_preview, test_result['correctness']]
+            row = [f"{i}", input_preview, result_preview[:200], test_result['correctness']]
             if include_time:
                 row.append(f"{test_result['execution_time']:.2f}")
             if include_memory:
                 row.append(f"{test_result['memory_used']:.2f}")
             
-            table_lines.append("\t".join(row))
+            table_lines.append("\t".join([i[:100] for i in row]))
             
         except Exception as e:
             if include_memory:
@@ -170,7 +170,7 @@ def universal_test_solution(
             if include_memory:
                 row.append("-")
             
-            table_lines.append("\t".join(row))
+            table_lines.append("\t".join([i[:100] for i in row]))
         
         results['test_details'].append(test_result)
     
