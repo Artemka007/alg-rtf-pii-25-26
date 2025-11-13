@@ -27,7 +27,7 @@ def run_database_solution(inp_file):
         sys.stdout = output_capture
         
         # Запускаем решение
-        from task13_ext import solution  # Импортируем ваше решение
+        from task13 import solution  # Импортируем ваше решение
         solution()
         
         # Получаем результат
