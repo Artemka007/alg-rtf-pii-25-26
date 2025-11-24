@@ -32,21 +32,22 @@ def solution(n: int, m: int, s: str, t: str):
         max_suffix += 1
 
     for l in range(1, n):
-        min_i = n - max_suffix + l
-        max_i = max_prefix
+        min_i = n - max_suffix + l - 1
+        max_i = max_prefix - 1
         
         if min_i > max_i:
+            break
+        
+        if (m - (n - min_i) + l - (min_i)) % l != 0:
             continue
 
-        if (min_i + m - max_prefix) % l != 0:
-            continue
-
-        found = False
-        h = s.get_hash(min_i - l, min_i)
-        for i in range(min_i + l, m - max_prefix, l):
-            if h != t.get_hash(i - l, i):
+        found = True
+        h = s.get_hash(min_i-l+1, min_i+1)
+        for k in range(min_i + 1, m - (n - min_i) + l, l):
+            if h != t.get_hash(k - l, k):
                 found = False
                 break
+
         count += (max_i - min_i + 1) if found else 0
 
 

@@ -11,6 +11,6 @@ def solution(N: int, items: list[int]):
         b = h.pop()
         summary = a + b
         total += summary * 0.01
-        h.insert(summary)
+        h.insert(summary * 0.99)
     
     return math.ceil(total * 100) / 100
