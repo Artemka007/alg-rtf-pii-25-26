@@ -9,7 +9,14 @@ public class task13 {
     }
 
     public static int solution(int N) {
-        int[] dp = new int[N + 1];
+        if (N == 1) {
+            return 0;
+        }
+
+        if (N == 2) {
+            return 1;
+        }
+
         int[] prefix = new int[N + 1];
 
         prefix[0] = 1;
@@ -21,14 +28,15 @@ public class task13 {
             int base = (step > 0) ? prefix[step - 1] : 0;
             int loseCount = prev - base;
             if (loseCount > 0) {
-                dp[i] = 1;
                 prefix[i] = prev;
             } else {
-                dp[i] = 0;
                 prefix[i] = prev + 1;
+            }
+            if (i == N) {
+                return loseCount > 0 ? 1 : 0;
             }
         }
 
-        return dp[N];
+        return -1;
     }
 }

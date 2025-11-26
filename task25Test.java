@@ -32,7 +32,7 @@ public class task25Test {
         TestCase25[] testCases = {
             new TestCase25(2, 2, new int[][]{{1, 2}, {3, 4}}, 4),
             new TestCase25(3, 3, new int[][]{{0, 1, 2}, {1, 2, 3}, {2, 3, 4}}, 4),
-            new TestCase25(3, 5, new int[][]{{3, 1, 4, 1, 5}, {9, 2, 6, 5, 3}, {5, 9, 7, 9, 3}}, 1),
+            new TestCase25(3, 5, new int[][]{{3, 1, 4, 1, 5}, {9, 2, 6, 5, 3}, {5, 9, 7, 9, 3}}, 5),
             new TestCase25(1000, 1000, matrix, 5),
         };
 

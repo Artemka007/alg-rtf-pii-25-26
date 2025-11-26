@@ -18,9 +18,7 @@ public class task16Test {
 
     public static void main(String[] args) {
         TestCase13[] testCases = {
-            new TestCase13(1, 2, BigInteger.ONE),
-            new TestCase13(3, 2, BigInteger.TWO),
-            new TestCase13(5, 26, new BigInteger("11726")),
+            new TestCase13(6, 10, new BigInteger("55252")),
             new TestCase13(28, 12, new BigInteger("35806106077437501422929813320")),
             new TestCase13(150, 26, new BigInteger("764485668472672515783170878043956732152720687894642666768747230247757616459696029541313522686204640386790673053169884153974150844585472693651836254864072430874661109483949943146902450151006126136010441648944656")),
         };
