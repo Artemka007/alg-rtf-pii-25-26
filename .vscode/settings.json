@@ -46,7 +46,11 @@
     "list": "cpp",
     "map": "cpp",
     "xhash": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "functional": "cpp",
+    "deque": "cpp",
+    "queue": "cpp",
+    "unordered_map": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

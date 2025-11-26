@@ -1,6 +1,9 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class task13 {
     public static void main(String[] args) throws Exception {
-        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(reader.readLine().trim());
         System.out.println(solution(N) == 0 ? "First" : "Second");
     }
